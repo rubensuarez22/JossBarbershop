@@ -7,9 +7,13 @@
     "build": "ng build",
     "build:href": "ng build --configuration production --base-href ./",
     "build:github": "npm run build:href && npm run delete:docs && npm run copy:dist",
-    "delete:docs": "del-cli docs",
-    "copy:dist": "copyfiles \"dist/joss-barbershop/**/*\" docs -f",
-    "test": "ng test"
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "reorder:dist": "npm run copy:browsercontent && npm run delete:browser",
+    "copy:browsercontent": "copyfiles dist/joss-barbershop/browser/* dist/joss-barbershop -f",
+    "delete:browser": "del-cli dist/joss-barbershop/browser",
+    "copy:dist": "copyfiles -u 2 \"dist/joss-barbershop/**/*\" docs",
+    "delete:docs": "del-cli docs"
   },
   "private": true,
   "dependencies": {
