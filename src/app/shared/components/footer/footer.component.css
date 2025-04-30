@@ -1,0 +1,128 @@
+.footer {
+    background-color: #111;
+    /* fondo oscuro */
+    color: #eee;
+    /* texto claro */
+    margin: 64px 0 0;
+    /* margen Y arriba */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Contenedor principal */
+.footer__top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px 32px;
+    /* padding X=32, bottom=32 */
+    box-sizing: border-box;
+}
+
+/* Columnas */
+.footer__brand,
+.footer__contact,
+.footer__hours,
+.footer__social {
+    flex: 1 1 200px;
+    /* crecen hasta ocupar, base 200px */
+    min-width: 180px;
+}
+
+/* Marca */
+.footer__logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.footer__tagline {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin: 0;
+}
+
+/* Títulos de columna */
+.footer__heading {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+/* Listas de contacto y horario */
+.footer__list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.75rem;
+}
+
+.footer__list li {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #ddd;
+    margin-bottom: 0.5rem;
+}
+
+.footer__icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.75rem;
+    filter: invert(1);
+    /* iconos claros */
+}
+
+/* Sección social */
+.footer__social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer__social-icons img {
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: invert(1);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.footer__social-icons img:hover {
+    opacity: 0.7;
+}
+
+/* Línea divisoria */
+.footer__divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0 32px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Texto inferior */
+.footer__bottom {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #888;
+    padding: 16px 32px 32px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer__top {
+        flex-direction: column;
+        padding: 0 16px 16px;
+    }
+
+    .footer__divider,
+    .footer__bottom {
+        margin: 0 16px;
+    }
+}

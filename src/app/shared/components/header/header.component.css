@@ -1,0 +1,97 @@
+/* Reset any default margin */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ocupa todo el ancho de la ventana */
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+/* container for centering content */
+.header__inner {
+    /* Centra el bloque si la ventana > max-width */
+    padding: 1rem 2rem;
+    /* Espaciado interno */
+    width: 100%;
+    /* Intenta ocupar el 100% del espacio disponible hasta max-width */
+    box-sizing: border-box;
+    /* Asegura que padding se incluya en el width */
+
+    /* Flexbox Layout */
+    display: flex;
+    align-items: center;
+    /* Alinea verticalmente al centro */
+    justify-content: space-between;
+    /* !!! CLAVE: Distribuye los hijos: 1ro a la izq, último a la der */
+}
+
+/* Logo styling */
+.header__logo {
+    /* margin-right: auto; <-- Quitado temporalmente, space-between debería bastar */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #000000;
+    text-decoration: none;
+    flex-shrink: 0;
+    /* Evita que el logo se encoja si no hay espacio */
+}
+
+/* Navigation links container */
+.header__nav {
+    display: flex;
+    align-items: center;
+    /* Puedes añadir un margen izquierdo/derecho aquí si necesitas separar la nav del logo/botón */
+    /* margin: 0 2rem; */
+}
+
+.header__link {
+    margin: 0 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #4B5563;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    /* Evita saltos de línea en los enlaces */
+}
+
+.header__link:hover {
+    color: #C4A47C;
+}
+
+/* CTA button */
+.header__btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: #C4A47C;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    /* Evita que el botón se encoja */
+}
+
+.header__btn:hover {
+    background-color: #ad8d6b;
+}
+
+/* adjust this value to match your header height */
+main,
+.landing {
+    padding-top: 80px;
+    /* Ajusta si cambia la altura del header */
+}

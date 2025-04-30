@@ -1,0 +1,122 @@
+.barbers-list {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #F9FAFB;
+}
+
+.barbers-list__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.barbers-list__grid {
+    display: flex;
+    /* Flex en fila */
+    gap: 1rem;
+    /* Separación entre tarjetas */
+    overflow-x: auto;
+    /* Scroll horizontal cuando no quepan */
+    padding-bottom: 1rem;
+    /* Espacio para el scrollbar */
+    -webkit-overflow-scrolling: touch;
+    /* Scroll suave en iOS */
+}
+
+.barber-card {
+    flex: 0 0 438px;
+    /* ancho fijo */
+    width: 438px;
+    /* redundante para asegurar width */
+    height: 520px;
+    /* alto fijo */
+    background: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.barber-card__img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.barber-card__body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.barber-card__name {
+    margin: 0 0 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-align: left;
+}
+
+/* Rating */
+.barber-card__rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.star {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+    background: url('/assets/icons/star-empty.svg') no-repeat center/contain;
+}
+
+.star.filled {
+    background-image: url('/assets/icons/star-filled.svg');
+}
+
+.barber-card__score {
+    margin-left: 0.5rem;
+    font-size: 0.875rem;
+    color: #555;
+}
+
+/* Tags */
+.barber-card__tags {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.barber-card__tags li {
+    background: #F3F4F6;
+    color: #C4A47C;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+}
+
+/* Button */
+.barber-card__btn {
+    margin-top: auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    background-color: #ffffff;
+    color: #C4A47C;
+    border: 1px solid #C4A47C;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+}
+
+.barber-card__btn:hover {
+    background-color: #C4A47C;
+    color: #ffffff;
+}

@@ -1,0 +1,25 @@
+<section class="barbers-list">
+    <h2 class="barbers-list__title">Nuestros Maestros Barberos</h2>
+    <div class="barbers-list__grid">
+        <article class="barber-card" *ngFor="let b of barbers">
+            <img [src]="b.imageUrl" [alt]="b.name" class="barber-card__img">
+
+            <div class="barber-card__body">
+                <h3 class="barber-card__name">{{ b.name }}</h3>
+
+                <div class="barber-card__rating">
+                    <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
+                        <i class="star" [class.filled]="i < b.rating" aria-hidden="true"></i>
+                    </ng-container>
+                    <span class="barber-card__score">{{ b.rating.toFixed(1) }}</span>
+                </div>
+
+                <ul class="barber-card__tags">
+                    <li *ngFor="let tag of b.tags">{{ tag }}</li>
+                </ul>
+
+                <button class="barber-card__btn">Ver Portafolio</button>
+            </div>
+        </article>
+    </div>
+</section>

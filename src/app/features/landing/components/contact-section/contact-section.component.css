@@ -1,0 +1,81 @@
+.contact-section {
+    background: #F9FAFB;
+    /* margen exterior vertical 64px y centrar horizontal */
+    margin: 64px auto;
+    padding: 0;
+}
+
+.contact-section__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    /* espacio entre bloques */
+    margin: 0 32px;
+    /* margen X = 32px */
+
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+/* Cada bloque */
+.contact-item {
+    flex: 1 1 280px;
+    /* que crezca, que encoja, base de 280px */
+}
+
+/* Título de bloque */
+.contact-item__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #222222;
+}
+
+/* Listas (Contacto y Horario) */
+.contact-item__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item__list li {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #555555;
+    margin-bottom: 0.75rem;
+}
+
+/* Iconos en lista */
+.contact-item__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+}
+
+/* Bloque social */
+.contact-item__social {
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-item__social img {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.contact-item__social img:hover {
+    opacity: 0.7;
+}
+
+/* Responsive: apilar en móvil */
+@media (max-width: 768px) {
+    .contact-section__container {
+        flex-direction: column;
+        margin: 0 16px;
+    }
+}

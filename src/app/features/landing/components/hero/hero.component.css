@@ -1,0 +1,67 @@
+.hero {
+    position: relative;
+    width: 100%;
+    /* full width */
+    height: 80vh;
+    /* adjust as needed */
+    background: url('/assets/hero-bg.jpg') no-repeat center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* shorthand for top/​right/​bottom/​left: 0 */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero__content {
+    position: relative;
+    /* lift content above the overlay */
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+}
+
+
+.hero__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 0 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0 0 2rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.hero__cta {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.094rem;
+    padding: 0.75rem 2rem;
+    background-color: #C4A47C;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero__cta:hover {
+    background-color: #ad8d6b;
+}

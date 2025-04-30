@@ -1,0 +1,106 @@
+.about-us {
+    display: flex;
+    /* flex-wrap: wrap; Si quieres que se apilen en pantallas pequeñas, déjalo */
+    align-items: flex-start;
+    /* Alinea los elementos por arriba */
+    gap: 48px;
+    /* Espacio entre imagen y texto */
+    max-width: 3000px;
+    /* Ancho máximo de la sección */
+    margin: 64px auto;
+    /* Centra la sección en la página */
+    padding: 0 32px;
+    /* Espacio en los bordes DENTRO de los 1200px */
+    box-sizing: border-box;
+}
+
+.about-us__image {
+    /* --- ESTRATEGIA: Tamaño Fijo para la Imagen --- */
+
+    /* Opción 1: Usando un ancho fijo en píxeles (como tenías antes) */
+    flex: 0 0 664px;
+    /* No crecer (0), No encoger (0), Base de 664px */
+    width: 664px;
+    /* Añadir width explícito puede ayudar */
+    max-width: 100%;
+    /* Seguridad para pantallas muy pequeñas si no hay wrap */
+
+    /* Opción 2: Usando un porcentaje (ajusta el % como necesites) */
+    /* flex: 0 0 55%; */
+    /* Ejemplo: No crecer, No encoger, Base 55% del padre */
+    /* width: 55%; */
+    /* max-width: 100%; */
+
+    /* --- Estilos Comunes --- */
+    overflow: hidden;
+    border-radius: 0.75rem;
+    /* Esquinas redondeadas */
+}
+
+.about-us__image img {
+    display: block;
+    /* Quita espacio extra debajo de la imagen */
+    width: 100%;
+    /* Llena el contenedor .about-us__image */
+    height: auto;
+    /* Permite que la altura se ajuste para mantener la proporción */
+    object-fit: cover;
+    /* Asegura que la imagen cubra bien el área */
+}
+
+.about-us__content {
+    /* --- ESTRATEGIA: Dejar que el Contenido Crezca --- */
+    flex: 1 1 auto;
+    /* Crecer (1), Encoger (1), Base automática */
+    min-width: 0;
+    /* Solución común para evitar que el contenido flex se desborde */
+}
+
+/* --- El resto de estilos (.about-us__title, .about-us__text, etc.) --- */
+/* --- deberían permanecer igual que en la versión anterior --- */
+
+.about-us__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.875rem;
+    /* 30px */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.about-us__text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 1.5rem;
+}
+
+.about-us__services {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    row-gap: 0.75rem;
+    column-gap: 2rem;
+}
+
+.about-us__services li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: #333333;
+    line-height: 1.4;
+}
+
+.about-us__services li::before {
+    content: '▣';
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    color: #C4A47C;
+    font-size: 1rem;
+    line-height: 1;
+}
