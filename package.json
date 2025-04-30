@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:href": "ng build --configuration production --base-href /joss-barbershop/",
+    "build:href": "ng build --configuration production --base-href ./",
     "build:github": "npm run build:href && npm run delete:docs && npm run copy:dist",
     "delete:docs": "del-cli docs",
-    "copy:dist": "copyfiles -u 2 \"dist/joss-barbershop/**/*\" docs -f",
+    "copy:dist": "copyfiles \"dist/joss-barbershop/**/*\" docs -f",
     "test": "ng test"
   },
   "private": true,
