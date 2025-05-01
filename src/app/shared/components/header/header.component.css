@@ -98,3 +98,37 @@ main,
     padding-top: 80px;
     /* Ajusta si cambia la altura del header */
 }
+
+@media (max-width: 768px) {
+    .header__inner {
+        padding: 0.75rem 1rem;
+    }
+
+    /* Aquí sí centramos el logo y obligamos el wrap */
+    .header__logo {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        /* espacio antes de la nav */
+    }
+
+    /* La nav ahora ocupa otra línea y centra sus enlaces */
+    .header__nav {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .header__link {
+        margin: 0.25rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Y el botón va en su propia línea, centrado */
+    .header__btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+    }
+}
