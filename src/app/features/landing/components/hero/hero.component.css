@@ -1,34 +1,41 @@
 .hero {
     position: relative;
     width: 100%;
-    /* full width */
     height: 80vh;
-    /* adjust as needed */
-    background: url('../../../../../assets/hero-bg.jpg') no-repeat center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
 
+.hero__background-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    /* CORRECTO: Capa base */
+}
+
 .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    /* shorthand for top/​right/​bottom/​left: 0 */
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 2;
+    /* <<< CORREGIDO: Poner encima de la imagen */
 }
 
 .hero__content {
     position: relative;
-    /* lift content above the overlay */
-    z-index: 2;
+    z-index: 3;
+    /* <<< CORREGIDO: Poner encima del overlay */
     text-align: center;
     color: #fff;
 }
 
-
+/* --- Estilos de texto y botón (sin cambios) --- */
 .hero__title {
     font-family: 'Montserrat', sans-serif;
     font-size: 3.5rem;
