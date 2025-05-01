@@ -4,7 +4,7 @@
     /* full width */
     height: 80vh;
     /* adjust as needed */
-    background: url('/assets/hero-bg.jpg') no-repeat center/cover;
+    background: url('../../../../../assets/hero-bg.jpg') no-repeat center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
