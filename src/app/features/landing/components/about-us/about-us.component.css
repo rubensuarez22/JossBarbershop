@@ -104,3 +104,107 @@
     font-size: 1rem;
     line-height: 1;
 }
+
+/* --- Media Query para Tablet/Móvil (ej. pantallas hasta 768px de ancho) --- */
+@media (max-width: 768px) {
+
+    .about-us {
+        /* Cambiar a layout vertical */
+        flex-direction: column;
+        /* Centrar imagen y bloque de texto horizontalmente */
+        align-items: center;
+        /* Reducir el gap (ahora vertical) */
+        gap: 32px;
+        /* Reducir márgenes/padding de la sección */
+        margin: 48px auto;
+        /* Menos margen superior/inferior */
+        padding: 0 24px;
+        /* Menos padding lateral */
+    }
+
+    .about-us__image {
+        /* Quitar base fija, hacerla flexible y ocupar ancho */
+        flex-basis: auto;
+        width: 100%;
+        /* Opcional: limitar ancho máximo para estética */
+        max-width: 500px;
+        /* No necesita margen inferior si se usa 'gap' en el padre */
+    }
+
+    .about-us__content {
+        /* Asegurar que ocupe el ancho */
+        flex-basis: auto;
+        width: 100%;
+        /* Opcional: Centrar el texto si la imagen también está centrada */
+        text-align: center;
+    }
+
+    .about-us__title {
+        font-size: 1.6rem;
+        /* Reducir tamaño título */
+        margin-bottom: 0.75rem;
+    }
+
+    .about-us__text {
+        font-size: 0.95rem;
+        /* Reducir tamaño texto */
+        margin-bottom: 1.25rem;
+        /* Si el texto general está centrado pero quieres este párrafo a la izquierda: */
+        /* text-align: left; */
+    }
+
+    .about-us__services {
+        /* Cambiar a una sola columna */
+        grid-template-columns: 1fr;
+        row-gap: 0.6rem;
+        /* Ajustar gap vertical */
+        column-gap: 0;
+        /* Ya no aplica */
+        /* Opcional: Limitar ancho y centrar la lista si el texto está centrado */
+        max-width: 400px;
+        /* Evita que la lista sea excesivamente ancha */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-us__services li {
+        font-size: 0.9rem;
+        /* Reducir fuente lista */
+        /* Si el contenedor de la lista está centrado, asegurar que el texto del item esté alineado como se desee */
+        text-align: left;
+        /* Mantiene el texto del item alineado a la izquierda (con su viñeta) */
+        padding-left: 1.25rem;
+        /* Ajustar padding si es necesario */
+    }
+
+    .about-us__services li::before {
+        /* Podría necesitar ajustar ligeramente la posición o tamaño */
+        /* font-size: 0.9rem; */
+        /* left: -0.2rem; */
+        /* Ejemplo */
+    }
+
+}
+
+/* --- (Opcional) Media Query para Móviles más Pequeños (ej. hasta 480px) --- */
+@media (max-width: 480px) {
+    .about-us {
+        padding: 0 16px;
+        /* Menos padding lateral */
+        gap: 24px;
+        /* Menos gap vertical */
+        margin: 32px auto;
+    }
+
+    .about-us__title {
+        font-size: 1.4rem;
+    }
+
+    .about-us__text {
+        font-size: 0.9rem;
+    }
+
+    .about-us__services li {
+        font-size: 0.85rem;
+    }
+}

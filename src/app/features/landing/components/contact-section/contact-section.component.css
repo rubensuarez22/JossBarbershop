@@ -72,10 +72,93 @@
     opacity: 0.7;
 }
 
-/* Responsive: apilar en móvil */
+/* --- Responsive: Apilar y ajustar en móvil --- */
+/* (Refinando tu media query existente) */
 @media (max-width: 768px) {
+
+    .contact-section {
+        margin: 48px auto;
+        /* Reducir margen vertical de la sección */
+    }
+
     .contact-section__container {
         flex-direction: column;
-        margin: 0 16px;
+        /* Mantiene el apilamiento vertical */
+        gap: 1.75rem;
+        /* Ajustar espacio vertical entre bloques */
+
+        /* Reducir padding y quitar margen horizontal (innecesario si es 100% ancho) */
+        padding: 32px 24px;
+        margin-left: 16px;
+        /* O usar padding en el body/contenedor principal */
+        margin-right: 16px;
+        /* align-items: stretch; */
+        /* Asegura que los items ocupen todo el ancho (generalmente es el default) */
+    }
+
+    .contact-item {
+        /* En modo columna, flex-basis es menos relevante */
+        /* Aseguramos que ocupen el ancho disponible si no lo hacen por defecto */
+        width: 100%;
+        min-width: unset;
+        /* Resetear min-width */
+        /* Opcional: añadir margen inferior si 'gap' no es suficiente */
+        /* margin-bottom: 1rem; */
+    }
+
+    /* .contact-item:last-child { margin-bottom: 0; } */
+
+    .contact-item__title {
+        font-size: 1.35rem;
+        /* Título más pequeño */
+        margin-bottom: 0.8rem;
+    }
+
+    .contact-item__list li {
+        font-size: 0.95rem;
+        /* Texto de lista más pequeño */
+        margin-bottom: 0.6rem;
+    }
+
+    .contact-item__icon {
+        /* Los iconos parecen de buen tamaño, pero podrías ajustarlos */
+        /* width: 1.1rem; height: 1.1rem; margin-right: 0.6rem; */
+    }
+
+    .contact-item__social {
+        gap: 0.75rem;
+        /* Menos espacio entre iconos sociales */
+        /* Opcional: Centrar los iconos si prefieres */
+        /* justify-content: center; */
+    }
+
+    .contact-item__social img {
+        /* Iconos sociales parecen de buen tamaño, pero podrías ajustar */
+        /* width: 1.8rem; height: 1.8rem; */
+    }
+}
+
+/* --- (Opcional) Media Query para Móviles más Pequeños --- */
+@media (max-width: 480px) {
+    .contact-section {
+        margin: 32px auto;
+        /* Aún menos margen vertical */
+    }
+
+    .contact-section__container {
+        padding: 24px 16px;
+        /* Aún menos padding */
+        gap: 1.5rem;
+        /* Aún menos gap */
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .contact-item__title {
+        font-size: 1.25rem;
+    }
+
+    .contact-item__list li {
+        font-size: 0.9rem;
     }
 }

@@ -120,3 +120,86 @@
     background-color: #C4A47C;
     color: #ffffff;
 }
+
+@media (max-width: 600px) {
+
+    .barbers-list {
+        padding: 2rem 1rem;
+        /* Reducir padding general */
+    }
+
+    .barbers-list__title {
+        font-size: 1.6rem;
+        /* Título más pequeño */
+        margin-bottom: 1.5rem;
+    }
+
+    .barbers-list__grid {
+        gap: 0.75rem;
+        /* Espacio entre tarjetas ligeramente menor */
+        /* Añadir padding a los lados del grid para que las tarjetas no empiecen/terminen pegadas al borde */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        /* Esto también ayuda a que se vea parte de la siguiente/anterior tarjeta */
+        /* Hacemos el contenedor grid un poco más ancho que el viewport para compensar el padding */
+        /* y evitar que el scrollbar aparezca innecesariamente si solo hay 1 o 2 tarjetas */
+        margin-left: -1rem;
+        margin-right: -1rem;
+        /* Si usas scroll-snap, ajusta el scroll-padding */
+        /* scroll-padding: 0 1rem; */
+        /* scroll-snap-type: x mandatory; */
+        /* Puede que necesites desactivarlo si el padding/margin interfiere */
+    }
+
+    .barber-card {
+        /* Reducir el ancho fijo (flex-basis) */
+        flex-basis: 300px;
+        /* Ajusta este valor. Prueba entre 280px y 320px */
+        /* O usa %/vw: flex-basis: 85vw; */
+        width: 300px;
+        /* Asegúrate que coincida con flex-basis */
+
+        /* Hacer altura automática para que dependa del contenido */
+        height: auto;
+        /* O reducir altura fija: height: 480px; */
+    }
+
+    .barber-card__img {
+        height: 240px;
+        /* Reducir altura de imagen */
+    }
+
+    .barber-card__body {
+        padding: 1rem;
+        /* Menos padding interno */
+    }
+
+    .barber-card__name {
+        font-size: 1.15rem;
+        /* Nombre un poco más pequeño */
+    }
+
+    /* Ajustar espaciado y tamaño de elementos internos */
+    .barber-card__rating {
+        margin-bottom: 0.75rem;
+    }
+
+    /* .star { width: 0.9rem; height: 0.9rem; } */
+    /* .barber-card__score { font-size: 0.8rem; } */
+
+    .barber-card__tags {
+        margin-bottom: 1rem;
+        gap: 0.4rem;
+    }
+
+    .barber-card__tags li {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .barber-card__btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.9rem;
+        /* Botón ligeramente más pequeño */
+    }
+}
