@@ -9,7 +9,9 @@
 
                 <div class="barber-card__rating">
                     <ng-container *ngFor="let star of [1,2,3,4,5]; let i = index">
-                        <i class="star" [class.filled]="i < b.rating" aria-hidden="true"></i>
+                        <img class="rating-star-img" aria-hidden="true"
+                            [src]="i < b.rating ? '/assets/icons/star-filled.svg' : '/assets/icons/star-empty.svg'"
+                            alt="" />
                     </ng-container>
                     <span class="barber-card__score">{{ b.rating.toFixed(1) }}</span>
                 </div>

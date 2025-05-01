@@ -114,15 +114,99 @@
     padding: 16px 32px 32px;
 }
 
-/* Responsive */
+/* --- Responsive: Apilar y ajustar en móvil --- */
 @media (max-width: 768px) {
-    .footer__top {
-        flex-direction: column;
-        padding: 0 16px 16px;
+
+    .footer {
+        margin-top: 48px;
+        /* Reducir margen superior general */
     }
 
-    .footer__divider,
+    .footer__top {
+        flex-direction: column;
+        /* Apila las columnas */
+        /* ================================================ */
+        /* AQUÍ: Reduce este gap vertical entre columnas   */
+        /* Original era 48px (3rem), muy grande verticalmente */
+        /* Prueba con 2rem, 2.5rem                         */
+        /* ================================================ */
+        gap: 2rem;
+        /* <-- AJUSTA ESTE VALOR */
+        /* ================================================ */
+        padding: 32px 24px;
+        /* Menos padding lateral, mantener vertical */
+        max-width: 100%;
+        /* Ocupa todo el ancho */
+    }
+
+    /* Quitar flex-basis para que ocupen todo el ancho */
+    .footer__brand,
+    .footer__contact,
+    .footer__hours,
+    .footer__social {
+        flex-basis: auto;
+        width: 100%;
+        min-width: unset;
+        /* Opcional: Centrar el texto DENTRO de cada bloque apilado */
+        /* text-align: center; */
+    }
+
+    /* Ajustar márgenes y tamaños de fuente internos */
+    .footer__heading {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .footer__logo {
+        font-size: 1.15rem;
+    }
+
+    .footer__tagline {
+        font-size: 0.8rem;
+    }
+
+    .footer__list li {
+        font-size: 0.8rem;
+    }
+
+    .footer__divider {
+        padding: 0 16px;
+        /* Reducir padding lateral para el divisor */
+        margin-top: 24px;
+        /* Menos espacio sobre el divisor */
+    }
+
     .footer__bottom {
-        margin: 0 16px;
+        padding: 20px 16px 24px;
+        /* Reducir padding */
+        font-size: 0.7rem;
+        /* Fuente más pequeña */
+    }
+
+    /* Opcional: Centrar iconos sociales si centraste el texto */
+    /* .footer__social-icons { justify-content: center; } */
+}
+
+
+/* --- (Opcional) Media Query para Móviles más Pequeños --- */
+@media (max-width: 480px) {
+    .footer {
+        margin-top: 32px;
+    }
+
+    .footer__top {
+        padding: 0 16px;
+        /* Menos padding */
+        gap: 0.1rem;
+        /* Menos gap */
+    }
+
+    .footer__divider {
+        padding: 0 16px;
+        margin-top: 16px;
+    }
+
+    .footer__bottom {
+        padding: 16px 16px 20px;
     }
 }
