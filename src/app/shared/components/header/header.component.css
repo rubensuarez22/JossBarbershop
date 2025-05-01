@@ -100,35 +100,58 @@ main,
 }
 
 @media (max-width: 768px) {
+
     .header__inner {
         padding: 0.75rem 1rem;
+        flex-direction: column;
+        /* Apilar verticalmente */
+        align-items: center;
+        /* Centrar horizontalmente */
+        /* Añadimos esto por si acaso, aunque no debería afectar el eje horizontal */
+        justify-content: flex-start;
     }
 
-    /* Aquí sí centramos el logo y obligamos el wrap */
     .header__logo {
-        width: 100%;
+        /* font-size: 1.3rem; */
+        /* Considera reducir un poco si es muy grande */
         text-align: center;
-        margin-bottom: 0.5rem;
-        /* espacio antes de la nav */
+        /* Asegurar centrado de texto interno */
+        margin-bottom: 0.75rem;
     }
 
-    /* La nav ahora ocupa otra línea y centra sus enlaces */
     .header__nav {
+        /* === AJUSTE === */
         width: 100%;
+        /* Asegurar que el contenedor nav ocupe todo el ancho */
+        /* display: flex; ya viene de base */
         justify-content: center;
-        margin-bottom: 0.5rem;
+        /* Centrar los links DENTRO del nav */
+        flex-wrap: wrap;
+        margin-bottom: 0.75rem;
+        /* order: 3; */
+        /* Opcional */
     }
 
     .header__link {
         margin: 0.25rem 0.5rem;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        white-space: normal;
     }
 
-    /* Y el botón va en su propia línea, centrado */
     .header__btn {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        display: block;
+        max-width: 250px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        /* Quitar margen si es el último elemento */
+        /* order: 2; */
+        /* Opcional */
+    }
+
+    /* !!! Recordatorio: Ajusta este padding !!! */
+    main,
+    .landing {
+        padding-top: 180px;
+        /* <--- VALOR DE EJEMPLO, AJUSTAR */
     }
 }
