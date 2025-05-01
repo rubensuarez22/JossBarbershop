@@ -1,1 +1,42 @@
-<p>select-stylist works!</p>
+<div class="select-stylist-container">
+    <h2 class="stylist-title">Select Your Stylist</h2>
+  
+    <div class="stylist-grid">
+  
+      <div
+        class="stylist-card"
+        (click)="selectBarber(null)"
+        [class.is-selected]="selectedBarber === null"
+        role="button"
+        tabindex="0"
+        [attr.aria-pressed]="selectedBarber === null ? 'true' : 'false'"
+        aria-label="Select any available stylist"
+      >
+        <div class="stylist-icon-container">
+          <svg class="stylist-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </div>
+        <p class="stylist-name">Any Available Stylist</p>
+        <p class="stylist-info">First available professional</p>
+      </div>
+  
+      <div
+      *ngFor="let barber of availableBarbers; trackBy: trackByBarber" class="stylist-card"
+      (click)="selectBarber(barber)"
+      [class.is-selected]="selectedBarber === barber"  role="button"
+      tabindex="0"
+      [attr.aria-pressed]="selectedBarber === barber ? 'true' : 'false'" [attr.aria-label]="'Select stylist ' + barber.name"
+    >
+      <img
+        [src]="barber.imageUrl"
+        [alt]="'Photo of ' + barber.name"
+        class="stylist-photo"
+        loading="lazy"
+      />
+      <p class="stylist-name">{{ barber.name }}</p>
+      <p class="stylist-specialty" *ngIf="barber.tags && barber.tags.length > 0">
+        {{ barber.tags[0] }}
+      </p>
+    </div>
+    </div>

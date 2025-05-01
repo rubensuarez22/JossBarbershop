@@ -1,1 +1,37 @@
-<p>your-details works!</p>
+<div class="your-details-container">
+    <h2>Tus Datos</h2> <form #detailsForm="ngForm" (input)="onDetailsChange(detailsForm)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">Nombre(s)</label> <input type="text" id="firstName" name="firstName"
+                 [(ngModel)]="details.firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Apellido(s)</label> <input type="text" id="lastName" name="lastName"
+                 [(ngModel)]="details.lastName" required>
+        </div>
+      </div>
+  
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label> <input type="email" id="email" name="email"
+                 [(ngModel)]="details.email" required email>
+        </div>
+        <div class="form-group">
+          <label for="phone">Número de Teléfono</label> <input type="tel" id="phone" name="phone"
+                 [(ngModel)]="details.phone" required>
+        </div>
+      </div>
+  
+      <div class="form-group form-group-full">
+        <label for="specialRequests">Solicitudes Especiales</label> <textarea id="specialRequests" name="specialRequests" rows="4"
+                  placeholder="Cualquier solicitud o nota especial..." [(ngModel)]="details.specialRequests"></textarea>
+      </div>
+  
+      <div class="form-group form-group-full terms">
+        <input type="checkbox" id="terms" name="terms"
+               [(ngModel)]="details.termsAgreed" required>
+        <label for="terms">
+          Acepto los Términos y Condiciones y entiendo la política de cancelación </label>
+      </div>
+    </form>
+  </div>

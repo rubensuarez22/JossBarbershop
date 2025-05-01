@@ -1,1 +1,41 @@
-<p>booking-summary works!</p>
+<div class="summary-container">
+    <h3>Resumen de Reserva</h3>
+  
+    <div class="summary-details">
+      <div class="summary-row">
+        <span class="summary-label">Servicio</span>
+        <span class="summary-value">{{ serviceName || 'No seleccionado' }}</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Estilista</span>
+        <span class="summary-value">{{ stylistName || 'No seleccionado' }}</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Fecha y Hora</span>
+        <span class="summary-value">
+          <ng-container *ngIf="selectedDateTime; else noDateTime">
+            {{ selectedDateTime | date:'d MMM y' }} a las {{ selectedDateTime | date:'h:mm a' }}
+            </ng-container>
+          <ng-template #noDateTime>No seleccionada</ng-template>
+        </span>
+      </div>
+      <div class="summary-row total-price-row">
+        <span class="summary-label">Precio Total</span>
+        <span class="summary-value price">
+          <ng-container *ngIf="totalPrice !== null && totalPrice !== undefined; else noPrice">
+            {{ totalPrice | currency:'MXN':'symbol':'1.2-2' }}
+          </ng-container>
+          <ng-template #noPrice>--</ng-template>
+        </span>
+      </div>
+    </div>
+  
+    <div class="actions-area">
+      <a href="#" class="policy-link" (click)="$event.preventDefault(); onViewPolicy()">Política de Cancelación</a>
+      <button class="confirm-button" (click)="onConfirm()" [disabled]="!canConfirm">
+        Confirmar Reserva
+      </button>
+      <a href="#" class="support-link" (click)="$event.preventDefault(); onContactSupport()">¿Necesitas ayuda? Contacta a soporte</a>
+    </div>
+  
+  </div>

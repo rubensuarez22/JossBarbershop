@@ -7,7 +7,6 @@ import { HeroComponent } from './components/hero/hero.component';
 import { BarbersListComponent } from './components/barbers-list/barbers-list.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
-// … other shared landing components
 
 @NgModule({
   declarations: [

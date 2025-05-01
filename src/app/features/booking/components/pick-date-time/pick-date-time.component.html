@@ -1,1 +1,79 @@
-<p>pick-date-time works!</p>
+<div class="booking-container">
+    <h1>Selecciona Fecha y Hora</h1>
+  
+    <div class="content-wrapper">
+      <div class="calendar-container">
+        <div class="calendar-header">
+          <button class="nav-button" (click)="previousMonth()">&lt;</button>
+          <span class="month-year">{{ monthYearDisplay }}</span>
+          <button class="nav-button" (click)="nextMonth()">&gt;</button>
+        </div>
+        <div class="calendar-body">
+          <div class="day-names">
+            <span *ngFor="let dayName of dayNamesShort">{{ dayName }}</span>
+          </div>
+          <div class="date-grid">
+            <div *ngFor="let day of calendarDays"
+                 class="date-cell"
+                 [ngClass]="{
+                   'other-month': !day.isCurrentMonth,
+                   'today': day.isToday && day.isCurrentMonth,
+                   'selected': day.isSelected && day.isCurrentMonth,
+                   'disabled': day.isDisabled || !day.isCurrentMonth
+                 }"
+                 (click)="selectDate(day)">
+              {{ day.dayOfMonth }}
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="time-slots-container">
+        <h3>Horarios Disponibles</h3>
+        <p *ngIf="!selectedDate" class="select-date-prompt">Selecciona una fecha para ver los horarios</p>
+  
+        <div *ngIf="selectedDate">
+            <div class="time-section">
+                <p class="section-title">Mañana</p>
+                <hr> <div class="time-buttons">
+                    <button *ngFor="let time of timeSlots | slice:0:6"  class="time-slot-btn"
+                            [ngClass]="{ 'selected': isSelectedTime(time) }"
+                            (click)="selectTime(time)">
+                        {{ time }}
+                    </button>
+                </div>
+            </div>
+  
+            <div class="time-section">
+                <p class="section-title">Tarde</p>
+                <hr> <div class="time-buttons">
+                     <button *ngFor="let time of timeSlots | slice:6:14" class="time-slot-btn"
+                            [ngClass]="{ 'selected': isSelectedTime(time) }"
+                            (click)="selectTime(time)">
+                        {{ time }}
+                    </button>
+                </div>
+            </div>
+  
+            <div class="time-section">
+                 <p class="section-title">Noche</p>
+                 <hr> <div class="time-buttons">
+                      <button *ngFor="let time of timeSlots | slice:14" class="time-slot-btn"
+                             [ngClass]="{ 'selected': isSelectedTime(time) }"
+                             (click)="selectTime(time)">
+                         {{ time }}
+                     </button>
+                 </div>
+             </div>
+        </div>
+  
+  
+         <div *ngIf="selectedDate || selectedTime" class="selection-summary">
+             <p><strong>Selección:</strong>
+                 <span *ngIf="selectedDate"> {{ selectedDate | date:'fullDate':'':'es' }} </span>
+                 <span *ngIf="selectedTime"> a las {{ selectedTime }}</span>
+             </p>
+         </div>
+      </div>
+    </div>
+  </div>

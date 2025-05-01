@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Barber } from '../../../../interfaces/barber.model';
-
+import { BarberService } from '../../../../shared/services/barber.service';
 @Component({
   standalone: false,
   selector: 'app-barbers-list',
@@ -10,63 +10,12 @@ import { Barber } from '../../../../interfaces/barber.model';
 export class BarbersListComponent implements OnInit {
   barbers: Barber[] = [];
 
-  ngOnInit() {
-    this.barbers = [
-      {
-        name: 'Carlos Rodríguez',
-        imageUrl: 'assets/barbers/carlos.jpg',
-        rating: 4.8,
-        tags: ['Cortes Clásicos', 'Barbas', 'Afeitados']
-      },
-      {
-        name: 'Miguel Ángel Torres',
-        imageUrl: 'assets/barbers/miguel.jpg',
-        rating: 4.9,
-        tags: ['Diseños', 'Degradados', 'Tintes']
-      },
-      {
-        name: 'Javier Morales',
-        imageUrl: 'assets/barbers/javier.jpg',
-        rating: 4.7,
-        tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-      },
-      {
-        name: 'Raul Asensio',
-        imageUrl: 'assets/barbers/raul.jpg',
-        rating: 4.7,
-        tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-      },
-      {
-        name: 'Raul Asensio',
-        imageUrl: 'assets/barbers/raul.jpg',
-        rating: 4.7,
-        tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-      },
-      {
-        name: 'Raul Asensio',
-        imageUrl: 'assets/barbers/raul.jpg',
-        rating: 4.7,
-        tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-      },
-      {
-        name: 'Raul Asensio',
-        imageUrl: 'assets/barbers/raul.jpg',
-        rating: 4.7,
-        tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-      },
-      {
-        name: 'Raul Asensio',
-        imageUrl: 'assets/barbers/raul.jpg',
-        rating: 4.7,
-        tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-      },
-      {
-        name: 'Raul Asensio',
-        imageUrl: 'assets/barbers/raul.jpg',
-        rating: 4.7,
-        tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-      },
+  // Inyecta el servicio en el constructor
+  constructor(private barberService: BarberService) {}
 
-    ];
+  ngOnInit() {
+    // Obtén los barberos desde el servicio
+    this.barbers = this.barberService.getBarbers();
+     // Ya NO necesitas la lista hardcodeada aquí
   }
 }

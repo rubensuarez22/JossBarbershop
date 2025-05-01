@@ -1,0 +1,136 @@
+.summary-container {
+  background-color: #f8f9fa;
+  padding: 25px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  margin-top: 20px; /* Añade margen inferior si es necesario antes del siguiente elemento */
+
+  /* --- NUEVAS LÍNEAS PARA AJUSTAR ANCHO Y CENTRAR --- */
+  max-width: 1600px; /* Define un ancho máximo. Ajusta este valor (ej. 800px, 1000px) */
+  width: 100%;      /* Ocupa el 100% HASTA el max-width */
+  margin-left: auto; /* Centra el bloque horizontalmente */
+  margin-right: auto;/* Centra el bloque horizontalmente */
+  box-sizing: border-box; /* Importante para que padding/border no excedan el max-width */
+  /* --- FIN NUEVAS LÍNEAS --- */
+
+  /* Mantener las propiedades flexbox */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  }
+  
+  .summary-container h3 {
+    font-size: 1.3em;
+    margin: 0 0 20px 0; /* Margen inferior */
+    color: #333;
+    font-weight: 600;
+    flex-basis: 100%; /* Ocupar toda la primera línea */
+  }
+  
+  .summary-details {
+    flex: 2; /* Ocupar más espacio que las acciones */
+    min-width: 250px; /* Ancho mínimo */
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espacio entre filas del resumen */
+  }
+  
+  .summary-row {
+    display: flex;
+    justify-content: space-between; /* Label a la izq, Value a la der */
+    align-items: center;
+    padding-bottom: 12px; /* Espacio debajo de la fila */
+    border-bottom: 1px solid #eee; /* Línea divisoria sutil */
+    font-size: 0.95em;
+  }
+  
+  .summary-row:last-child {
+    border-bottom: none; /* Quitar borde de la última fila */
+    padding-bottom: 0;
+  }
+  
+  .summary-label {
+    color: #555;
+  }
+  
+  .summary-value {
+    color: #333;
+    font-weight: 500; /* Un poco más de peso para los valores */
+    text-align: right;
+  }
+  
+  .summary-value.price {
+    font-weight: bold; /* Precio en negrita */
+    color: #28a745; /* Color verde para el precio (opcional) */
+  }
+  
+  .actions-area {
+    flex: 1; /* Ocupar espacio restante */
+    min-width: 200px; /* Ancho mínimo */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Estirar botón/links al ancho */
+    gap: 12px; /* Espacio entre botón y links */
+    text-align: center; /* Centrar texto de los links */
+  }
+  
+  .confirm-button {
+    background-color: #d2b48c; /* Color beige/tan como en la imagen */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+  }
+  
+  .confirm-button:hover:not(:disabled) {
+    background-color: #c5a781; /* Un poco más oscuro al pasar el mouse */
+  }
+  
+  .confirm-button:disabled {
+    background-color: #e0e0e0; /* Gris claro cuando está deshabilitado */
+    cursor: not-allowed;
+    color: #a0a0a0;
+  }
+  
+  .policy-link,
+  .support-link {
+    color: #007bff; /* Color de enlace estándar */
+    text-decoration: none;
+    font-size: 0.85em;
+    cursor: pointer;
+  }
+  
+  .policy-link:hover,
+  .support-link:hover {
+    text-decoration: underline;
+  }
+  
+  .policy-link {
+    margin-bottom: 5px; /* Pequeño espacio antes del botón */
+  }
+  
+  .support-link {
+    margin-top: 5px; /* Pequeño espacio después del botón */
+    color: #6c757d; /* Color más sutil para el link de ayuda */
+  }
+  
+  /* Media Query para stack vertical en pantallas pequeñas */
+  @media (max-width: 768px) {
+    .summary-container {
+      flex-direction: column;
+      align-items: stretch; /* Alinear todo al ancho completo */
+    }
+    .summary-details, .actions-area {
+       width: 100%;
+       flex-basis: auto; /* Resetear flex-basis */
+    }
+    .actions-area {
+       margin-top: 20px; /* Añadir espacio si se apilan */
+    }
+  }

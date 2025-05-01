@@ -1,0 +1,148 @@
+/* Container and Title */
+.select-stylist-container {
+    padding: 1.5rem;
+    background-color: #f9fafa;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stylist-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem; /* Mantén o ajusta el margen inferior según necesites */
+    color: #333;
+    text-align: left; /* <--- Asegúrate que esté alineado a la izquierda */
+  }
+  
+  /* Grid Layout */
+  .stylist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Stylist Card Base Styles */
+  .stylist-card {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    border: 2px solid #f0f0f0;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 150px; /* Ajusta si es necesario */
+  }
+  
+  /* Card Hover State */
+  .stylist-card:hover {
+    border-color: #d0d0d0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Card Active/Pressed State */
+  .stylist-card:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Card Selected State */
+  .stylist-card.is-selected {
+    border-color: #C4A47C; /* Tu color de tema */
+    box-shadow: 0 3px 8px rgba(196, 164, 124, 0.2);
+  }
+  
+  /* Stylist Photo */
+  .stylist-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 1px solid #eee;
+  }
+  
+  /* Placeholder Icon Container */
+  .stylist-icon-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+  }
+  
+  /* Placeholder Icon SVG */
+  .stylist-icon {
+      width: 40px;
+      height: 40px;
+      fill: #a0a0a0;
+  }
+  
+  /* Text Styling inside Card */
+  .stylist-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.05em;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #333;
+    line-height: 1.3;
+  }
+  
+  .stylist-info,
+  .stylist-specialty {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+  
+  .stylist-specialty {
+      color: #555;
+  }
+  
+  
+  /* Responsive Adjustments (Example) */
+  @media (max-width: 480px) {
+      .stylist-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 1rem;
+      }
+  
+      .stylist-card {
+          padding: 1rem 0.75rem;
+           min-height: 220px;
+      }
+  
+       .stylist-photo, .stylist-icon-container {
+          width: 70px;
+          height: 70px;
+       }
+  
+       .stylist-icon {
+          width: 35px;
+          height: 35px;
+       }
+  
+      .stylist-title {
+          font-size: 1.5rem;
+      }
+  
+      .stylist-name {
+        font-size: 1em;
+      }
+  
+      .stylist-info,
+      .stylist-specialty {
+        font-size: 0.8em;
+      }
+  }

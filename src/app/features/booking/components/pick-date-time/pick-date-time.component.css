@@ -1,0 +1,132 @@
+.booking-container {
+    background-color: #f8f9fa;
+    border-radius: 8px; padding: 25px; width: 100%;
+    box-sizing: border-box; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+h1 { font-size: 1.5em; margin-bottom: 20px; color: #333; text-align: center; }
+
+.content-wrapper { display: flex; gap: 30px; flex-wrap: wrap; }
+
+.calendar-container,
+.time-slots-container {
+    background-color: #ffffff; border: 1px solid #e0e0e0;
+    border-radius: 6px; padding: 20px; flex: 1;
+    min-width: 300px; box-sizing: border-box;
+}
+
+/* --- Estilos del Calendario --- */
+.calendar-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
+}
+.month-year { font-weight: bold; font-size: 1.1em; }
+.nav-button {
+    background: none; border: 1px solid transparent; font-size: 1.4em;
+    cursor: pointer; color: #555; padding: 0 10px; line-height: 1;
+    border-radius: 4px; transition: background-color 0.2s ease, color 0.2s ease;
+}
+.nav-button:hover { color: #000; background-color: #e9ecef; }
+
+.calendar-body .day-names {
+    display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
+    font-weight: bold; color: #6c757d; margin-bottom: 10px; font-size: 0.8em; /* Un poco más pequeño */
+    padding-bottom: 5px; border-bottom: 1px solid #eee; text-transform: uppercase; /* MAYÚSCULAS como en la imagen */
+}
+.calendar-body .day-names span { padding: 5px 0; }
+
+.calendar-body .date-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; } /* Menos gap */
+
+.date-cell {
+    text-align: center;
+    padding: 8px 5px; /* Padding vertical y horizontal */
+    border-radius: 6px; /* Esquinas redondeadas, no circular */
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    font-size: 0.9em;
+    /* QUITADO: aspect-ratio: 1 / 1; */ /* Quitar para que no sea forzado a ser cuadrado */
+    min-height: 38px; /* Altura mínima */
+    display: flex; justify-content: center; align-items: center;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+}
+
+.date-cell:not(.other-month):not(.disabled) { cursor: pointer; }
+.date-cell:not(.other-month):not(.disabled):hover { background-color: #e9ecef}
+
+.date-cell.today:not(.selected):not(.disabled) {
+     border: 1px solid #adb5bd; /* Borde gris para hoy, como en la imagen */
+     color: #333; /* Color normal */
+     font-weight: normal; /* Sin negrita especial para hoy */
+     background-color: #f8f9fa; /* Fondo ligeramente diferente para hoy */
+}
+
+/* Celda seleccionada (Rectángulo redondeado beige) */
+.date-cell.selected {
+    background-color: #d2b48c; /* Color beige/tan similar a la imagen */
+    color: #3d312a; /* Color de texto oscuro sobre beige */
+    font-weight: bold;
+    border-color: transparent;
+}
+.date-cell.selected:hover { background-color: #c5a781; } /* Un poco más oscuro al pasar el mouse */
+
+.date-cell.disabled {
+    color: #adb5bd; cursor: not-allowed;
+    background-color: transparent; /* Sin fondo especial */
+    border-color: transparent;
+}
+.date-cell.disabled:hover { background-color: transparent !important; }
+.date-cell.today.disabled { border-color: transparent; color: #adb5bd; font-weight: normal; background-color: transparent; }
+
+
+/* --- Estilos del Selector de Horarios --- */
+.time-slots-container h3 { font-size: 1.2em; margin-bottom: 15px; color: #333; text-align: left; /* Alineado a la izquierda como en imagen */ }
+.select-date-prompt { color: #6c757d; text-align: center; margin: 20px 0; font-style: italic; }
+
+/* Estilos para secciones y divisores */
+.time-section {
+    margin-bottom: 20px;
+}
+.section-title {
+    font-weight: bold; color: #6c757d; margin-bottom: 8px;
+    font-size: 0.9em; text-transform: uppercase; /* Opcional: mayúsculas */
+}
+hr {
+    border: none; border-top: 1px solid #eee; /* Línea divisoria sutil */
+    margin: 10px 0 15px 0; /* Espaciado */
+}
+
+.time-buttons {
+    display: flex; flex-wrap: wrap; gap: 10px; /* Espacio entre botones */
+    /* QUITADO: justify-content: center; */ /* Para alinear a la izquierda por defecto */
+}
+
+/* Botones de hora (Rectángulo redondeado) */
+.time-slot-btn {
+    padding: 8px 15px; /* Padding original */
+    border: 1px solid #ced4da;
+    border-radius: 4px; /* Radio de borde pequeño como en la imagen */
+    background-color: #fff; cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 0.9em; color: #495057;
+}
+.time-slot-btn:hover { background-color: #f1f3f5; border-color: #adb5bd; }
+
+/* Botón de hora seleccionado (puedes ajustar el estilo) */
+.time-slot-btn.selected {
+    background-color: #e0e0e0; /* Gris claro seleccionado */
+    color: #333;
+    border-color: #adb5bd;
+    font-weight: bold; /* Opcional */
+}
+
+.selection-summary { margin-top: 25px; padding-top: 15px; /* QUITADA: border-top: 1px solid #eee; */ text-align: center; font-size: 0.95em; color: #333; }
+.selection-summary p { margin: 0; }
+
+/* Media Query (sin cambios) */
+@media (max-width: 768px) {
+    .content-wrapper { flex-direction: column; gap: 20px; }
+    .calendar-container, .time-slots-container { min-width: unset; width: 100%; }
+    h1 { font-size: 1.3em; }
+    .time-slots-container h3 { font-size: 1.1em; }
+    .date-cell { font-size: 0.85em; min-height: 34px;}
+    .time-slot-btn { padding: 8px 12px; font-size: 0.85em; }
+}

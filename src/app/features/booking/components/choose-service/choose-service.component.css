@@ -1,20 +1,16 @@
-/* Empuja hacia abajo toda la sección para dejar sitio al header fijo */
+/* --- Estilos generales (sin cambios) --- */
 :host {
     display: block;
-    margin-top: 30px;
-    /* Ajusta este valor a la altura real de tu header */
+    margin-top: 70px;
 }
 
-/* Estilos genéricos de sección */
 .booking__section {
-    margin-bottom: 2rem;
     padding: 1.5rem;
     background-color: #f9fafa;
     border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
 .choose-service__title {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.75rem;
@@ -23,72 +19,236 @@
     color: #333;
 }
 
-/* Grid de opciones */
+/* Estilo por defecto (Mobile First): Columnas automáticas y responsivas */
 .choose-service__options {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
-/* Tarjeta */
+/* A partir de 768px de ancho (tablets y más grandes): Forzar 3 columnas */
+@media (min-width: 768px) { /* Puedes ajustar este valor de 768px si prefieres */
+    .choose-service__options {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- Estilos de la Tarjeta (Modificados) --- */
 .service-card {
-    position: relative;
+    position: relative; /* Mantenido: Base para posicionar elementos internos */
     background: #ffffff;
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    border: 2px solid transparent; /* Añadido: Borde transparente inicial para evitar salto al seleccionar */
+    transition: border-color 0.2s ease; /* Añadido: Transición suave para el borde */
 }
 
-/* Oculta el checkbox visualmente */
-.service-card input {
+/* Oculta el checkbox real */
+.service-card__checkbox { /* Selector específico */
     position: absolute;
     opacity: 0;
     pointer-events: none;
+    /* No necesita top/right aquí, lo haremos en el label::after */
 }
 
-/* Label como flex para alinear icono + texto */
-.service-card label {
-    display: flex;
-    align-items: center;
+/* Label como contenedor principal y ancla para el checkbox visual */
+.service-card__label {
+    display: block; /* Cambiado: El label ahora estructura verticalmente */
+    position: relative; /* Añadido: Para posicionar el ::after */
     cursor: pointer;
+    /* Añadido: Espacio a la derecha para que el texto no se solape con el checkbox visual */
+    padding-right: 30px;
 }
 
-/* Icono */
+/* Checkbox Visual (creado con ::after en el label) */
+.service-card__label::after {
+    content: '';
+    position: absolute;
+    top: 0; /* Alineado arriba del label */
+    right: 0; /* Alineado a la derecha del label */
+    width: 18px; /* Tamaño del checkbox visual */
+    height: 18px;
+    border: 1px solid #ccc; /* Borde del checkbox */
+    border-radius: 3px;
+    background-color: #fff;
+    transition: all 0.2s ease; /* Transición para estado checked */
+}
+
+/* Checkbox Visual - Estado Marcado */
+.service-card__checkbox:checked + .service-card__label::after {
+    background-color: #C4A47C; /* Color de fondo al marcar */
+    border-color: #C4A47C; /* Color de borde al marcar */
+}
+
+/* Opcional: Añadir una "palomita" (checkmark) dentro del checkbox marcado */
+.service-card__label::before { /* Usamos ::before para la palomita */
+    content: '';
+    position: absolute;
+    top: 4px; /* Ajustar posición vertical */
+    right: 7px; /* Ajustar posición horizontal */
+    width: 5px;
+    height: 10px;
+    border: solid white; /* Color de la palomita */
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0; /* Oculta por defecto */
+    transition: opacity 0.2s ease;
+    z-index: 1; /* Asegura que esté sobre el fondo del ::after */
+}
+
+.service-card__checkbox:checked + .service-card__label::before {
+    opacity: 1; /* Muestra la palomita cuando está marcado */
+}
+
+
+/* Icono principal del servicio */
 .service-card__icon {
-    width: 2rem;
-    height: 2rem;
-    margin-right: 0.75rem;
+    display: block; /* Para que ocupe su línea */
+    width: 40px; /* Ajustado como en la imagen de ejemplo */
+    height: 40px; /* Ajustado como en la imagen de ejemplo */
+    margin-bottom: 12px; /* Cambiado: Espacio debajo del icono */
+    border-radius: 4px; /* Añadido: Esquinas redondeadas leves */
+     /* Asegúrate que el src="...icono..." es correcto */
 }
 
-/* Info textual */
+/* Contenedor de la información textual */
 .service-card__info {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Mantenido */
 }
 
+/* Nombre del servicio */
 .service-card__name {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    margin: 0;
-    font-size: 1rem;
+    font-weight: 700; /* Ajustado: Más grueso como en imagen */
+    margin: 0 0 8px 0; /* Mantenido: Espacio inferior */
+    font-size: 1.1em; /* Ajustado: Más grande como en imagen */
+    color: #333; /* Mantenido/Ajustado */
 }
 
+/* Detalles (contenedor de icono de duración + texto) */
 .service-card__details {
-    margin: 0.25rem 0 0;
+    margin: 0 0 8px 0; /* Ajustado: Espacio inferior */
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.875rem;
+    font-size: 0.9em; /* Ajustado: Como en imagen */
     color: #555;
+    display: flex; /* Mantenido */
+    align-items: center; /* Añadido: Para alinear icono y texto verticalmente */
+    gap: 0.4em; /* Mantenido/Ajustado: Espacio entre icono y texto */
+}
+
+/* Icono de Duración (reloj) */
+.service-card__duration-icon {
+    width: 1em; /* Cambiado: Tamaño relativo al texto */
+    height: 1em; /* Cambiado: Tamaño relativo al texto */
+    /* margin-right: 0; Quitado: Usamos gap en el contenedor */
+    opacity: 0.7; /* Añadido: Para hacerlo más sutil */
+}
+
+/* Texto de Duración */
+.service-card__duration {
+    font-weight: 500; /* Mantenido */
+}
+
+/* Precio (Elemento P independiente) */
+.service-card__price { /* Nueva regla para el P */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em; /* Ajustado: Más grande */
+    font-weight: bold; /* Ajustado: Negrita */
+    color: #C4A47C; /* Añadido: Color café/dorado como en imagen */
+    margin: 0; /* Quitar margen por defecto del párrafo */
+}
+
+/* Efecto visual en la tarjeta completa al seleccionar */
+/* Quita el outline del label que tenías antes */
+/* .service-card input:checked+label { ... } */
+
+/* Añade borde a TODA la tarjeta usando :has() */
+.service-card:has(.service-card__checkbox:checked) {
+  border-color: #C4A47C; /* Cambia el color del borde */
+}
+
+/* === ESTILOS DEL TIMELINE DE PROGRESO === */
+
+.booking-timeline {
+    margin-bottom: 2.5rem; /* Espacio entre timeline y título h2 */
+    padding: 0 1rem; /* Espaciado lateral opcional */
+
+    /* --- Añadido para limitar y centrar --- */
+    max-width: 1000px;   /* << AJUSTA ESTE VALOR según lo junto que lo quieras */
+    margin-left: auto;  /* Centra el contenedor horizontalmente */
+    margin-right: auto; /* Centra el contenedor horizontalmente */
+    /* --- Fin de lo añadido --- */
+}
+
+.timeline__steps {
+    display: flex; /* Coloca los pasos en línea */
+    align-items: flex-start; /* Alinea los items al inicio (útil si los textos varían en altura) */
+    justify-content: space-between; /* Distribuye el espacio */
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    position: relative; /* Base para las líneas conectoras */
+}
+
+.timeline__step {
+    display: flex; /* Alinea indicador y título */
+    flex-direction: column; /* Apila indicador encima de título */
+    align-items: center; /* Centra horizontalmente indicador y título */
+    position: relative; /* Necesario para la línea conectora ::after */
+    text-align: center; /* Centra el texto del título */
+    flex: 1; /* Permite que cada paso ocupe espacio para calcular la línea */
+}
+
+.timeline__indicator {
     display: flex;
-    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 30px; /* Tamaño del círculo */
+    height: 30px;
+    border-radius: 50%; /* Lo hace redondo */
+    background-color: #e0e0e0; /* Color de fondo por defecto (inactivo) */
+    color: #757575; /* Color del número por defecto (inactivo) */
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 0.5rem; /* Espacio entre círculo y texto */
+    z-index: 1; /* Asegura que esté sobre la línea */
+    position: relative; /* Asegura que z-index funcione */
+    border: 2px solid #e0e0e0; /* Borde inactivo */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-.service-card__duration,
-.service-card__price {
+.timeline__title {
+    font-size: 0.85em; /* Tamaño del texto del paso */
+    color: #757575; /* Color del texto por defecto (inactivo) */
+    font-family: 'Montserrat', sans-serif; /* Usa tu fuente */
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Efecto visual al seleccionar */
-.service-card input:checked+label {
-    outline: 2px solid #C4A47C;
-    outline-offset: 2px;
+/* Línea conectora (usando ::after en el paso) */
+.timeline__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 16px; /* Alinea verticalmente con el centro del círculo (ajustar si cambia tamaño) */
+    left: calc(50% + 15px); /* Empieza justo después del centro del círculo actual */
+    width: calc(100% - 30px); /* Ocupa el espacio hasta el siguiente círculo */
+    height: 2px; /* Grosor de la línea */
+    background-color: #e0e0e0; /* Color de la línea inactiva */
+    z-index: 0; /* Detrás del indicador */
+    transform: translateY(-50%); /* Centra la línea verticalmente */
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos para el paso ACTIVO */
+.timeline__step.is-active .timeline__indicator {
+    background-color: #C4A47C; /* Color de fondo activo (tu color dorado) */
+    color: #ffffff; /* Color del número activo (blanco) */
+    border-color: #C4A47C; /* Color del borde activo */
+}
+
+.timeline__step.is-active .timeline__title {
+    color: #C4A47C; /* Color del texto activo (tu color dorado) */
+    font-weight: 600;
 }
