@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 // Ajusta la ruta a la interfaz Barber desde aquí
 import { Barber } from '../../../../interfaces/barber.model';
 // Importa el servicio
@@ -14,6 +14,9 @@ export class SelectStylistComponent implements OnInit {
   availableBarbers: Barber[] = []; // Puedes llamarla como quieras
   selectedBarber: Barber | null = null; // Para manejar la selección
 
+  // 1. Añadir el Output. Emitirá el nombre (string) o null.
+  @Output() stylistSelected = new EventEmitter<string | null>();
+
   // Inyecta el mismo servicio
   constructor(private barberService: BarberService) { }
 
@@ -26,7 +29,9 @@ export class SelectStylistComponent implements OnInit {
   selectBarber(barber: Barber | null): void {
     this.selectedBarber = barber;
     console.log('Barbero seleccionado:', this.selectedBarber);
-    // Aquí iría la lógica para pasar al siguiente paso, etc.
+    
+    const selectedName = barber ? barber.name : null;
+    this.stylistSelected.emit(selectedName);
   }
 
   // Función trackBy: Devuelve un identificador único para cada barbero

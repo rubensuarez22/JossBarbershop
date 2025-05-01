@@ -31,49 +31,33 @@
       <div class="time-slots-container">
         <h3>Horarios Disponibles</h3>
         <p *ngIf="!selectedDate" class="select-date-prompt">Selecciona una fecha para ver los horarios</p>
-  
-        <div *ngIf="selectedDate">
+
+        <p *ngIf="selectedDate && displayableTimeSlots.length === 0" class="no-slots-message">
+            No hay horarios disponibles para esta fecha a partir de la hora actual.
+        </p>
+
+        <div *ngIf="selectedDate && displayableTimeSlots.length > 0">
+
             <div class="time-section">
-                <p class="section-title">Mañana</p>
-                <hr> <div class="time-buttons">
-                    <button *ngFor="let time of timeSlots | slice:0:6"  class="time-slot-btn"
-                            [ngClass]="{ 'selected': isSelectedTime(time) }"
-                            (click)="selectTime(time)">
-                        {{ time }}
-                    </button>
-                </div>
-            </div>
-  
-            <div class="time-section">
-                <p class="section-title">Tarde</p>
-                <hr> <div class="time-buttons">
-                     <button *ngFor="let time of timeSlots | slice:6:14" class="time-slot-btn"
-                            [ngClass]="{ 'selected': isSelectedTime(time) }"
-                            (click)="selectTime(time)">
-                        {{ time }}
-                    </button>
-                </div>
-            </div>
-  
-            <div class="time-section">
-                 <p class="section-title">Noche</p>
-                 <hr> <div class="time-buttons">
-                      <button *ngFor="let time of timeSlots | slice:14" class="time-slot-btn"
-                             [ngClass]="{ 'selected': isSelectedTime(time) }"
-                             (click)="selectTime(time)">
-                         {{ time }}
-                     </button>
+                 <p class="section-title">Horarios</p> <hr>
+                 <div class="time-buttons">
+                      <button *ngFor="let time of displayableTimeSlots" class="time-slot-btn"
+                              [ngClass]="{ 'selected': isSelectedTime(time) }"
+                              (click)="selectTime(time)">
+                          {{ time }}
+                      </button>
                  </div>
-             </div>
-        </div>
-  
-  
-         <div *ngIf="selectedDate || selectedTime" class="selection-summary">
+            </div>
+
+            </div>
+
+
+        <div *ngIf="selectedDate || selectedTime" class="selection-summary">
              <p><strong>Selección:</strong>
-                 <span *ngIf="selectedDate"> {{ selectedDate | date:'fullDate':'':'es' }} </span>
-                 <span *ngIf="selectedTime"> a las {{ selectedTime }}</span>
-             </p>
-         </div>
+                  <span *ngIf="selectedDate"> {{ selectedDate | date:'fullDate':'':'es' }} </span>
+                  <span *ngIf="selectedTime"> a las {{ selectedTime }}</span>
+                  </p>
+        </div>
       </div>
     </div>
   </div>

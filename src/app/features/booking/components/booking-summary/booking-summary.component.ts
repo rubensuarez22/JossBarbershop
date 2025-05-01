@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { DatePipe, CurrencyPipe } from '@angular/common'; // Importar Pipes
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
+import { DatePipe, CurrencyPipe, NgIf, NgTemplateOutlet } from '@angular/common'; // Asegúrate de importar NgIf y NgTemplateOutlet si tu componente no es standalone o no los importa automáticamente
 
 // Interfaz opcional para la estructura de datos de entrada
 export interface BookingDetails {
@@ -14,10 +14,8 @@ export interface BookingDetails {
   standalone: false,
   templateUrl: './booking-summary.component.html',
   styleUrls: ['./booking-summary.component.css'],
-  // Usar OnPush puede mejorar el rendimiento si las entradas no cambian frecuentemente
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // Proveer pipes directamente en el componente
-  providers: [DatePipe, CurrencyPipe]
+  providers: [DatePipe, CurrencyPipe] // Si no es standalone
 })
 export class BookingSummaryComponent {
 
@@ -26,18 +24,15 @@ export class BookingSummaryComponent {
   @Input() stylistName: string | null = null;
   @Input() selectedDateTime: Date | null = null;
   @Input() totalPrice: number | null = null;
-
-  // Indicador opcional para saber si la reserva está lista para confirmar
   @Input() canConfirm: boolean = false;
 
   // Salidas para notificar al padre sobre acciones del usuario
   @Output() confirmBooking = new EventEmitter<void>();
   @Output() viewPolicy = new EventEmitter<void>();
-  @Output() contactSupport = new EventEmitter<void>();
+  @Output() contactSupport = new EventEmitter<void>(); // Asegúrate de tener un elemento en el HTML para llamar a un método que emita esto si lo necesitas
 
-  // Constructor para inyectar pipes (necesario si se usan en la lógica del TS)
-  // Si solo se usan en la plantilla, no es estrictamente necesario inyectarlas aquí
-  // constructor(private datePipe: DatePipe, private currencyPipe: CurrencyPipe) {}
+  // Obtener referencia al elemento <dialog> usando ViewChild
+  @ViewChild('policyDialog') policyDialog!: ElementRef<HTMLDialogElement>;
 
   // Métodos para emitir eventos cuando se hace clic
   onConfirm(): void {
@@ -47,20 +42,18 @@ export class BookingSummaryComponent {
   }
 
   onViewPolicy(): void {
-    this.viewPolicy.emit();
-    // Podrías prevenir el comportamiento por defecto si es un enlace real
-    // event.preventDefault();
+    // Abre el diálogo modal
+    if (this.policyDialog?.nativeElement) {
+      this.policyDialog.nativeElement.showModal();
+    } else {
+      console.error("Referencia al diálogo de políticas no encontrada.");
+    }
   }
 
-  onContactSupport(): void {
-    this.contactSupport.emit();
-    // event.preventDefault();
+  // Método para cerrar el diálogo
+  closePolicyDialog(): void {
+    if (this.policyDialog?.nativeElement) {
+      this.policyDialog.nativeElement.close();
+    }
   }
-
-  // Método auxiliar (opcional) para formatear fecha/hora si se necesita lógica compleja
-  // getFormattedDateTime(): string {
-  //   if (!this.selectedDateTime) return 'No seleccionada';
-  //   // Ejemplo: '15 feb. 2024 a las 10:00 AM' (ajustar formato según necesidad)
-  //   return this.datePipe.transform(this.selectedDateTime, 'd MMM y \'a las\' h:mm a') ?? 'Fecha inválida';
-  // }
 }

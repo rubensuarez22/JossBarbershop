@@ -1,167 +1,50 @@
 <section class="choose-service booking__section">
     <div class="booking-timeline">
-        <ol class="timeline__steps">
-            <li class="timeline__step is-active">
-                <span class="timeline__indicator">1</span>
-                <span class="timeline__title">Servicio</span>
-                 </li>
-            <li class="timeline__step">
-                <span class="timeline__indicator">2</span>
-                <span class="timeline__title">Estilista</span>
-                 </li>
-            <li class="timeline__step">
-                <span class="timeline__indicator">3</span>
-                <span class="timeline__title">Fecha y Hora</span> </li>
-            <li class="timeline__step">
-                <span class="timeline__indicator">4</span>
-                <span class="timeline__title">Tus Detalles</span> </li>
-        </ol>
+      <ol class="timeline__steps">
+        <li class="timeline__step is-active">
+          <span class="timeline__indicator">1</span>
+          <span class="timeline__title">Servicio</span>
+        </li>
+        <li class="timeline__step">
+          <span class="timeline__indicator">2</span>
+          <span class="timeline__title">Estilista</span>
+        </li>
+        <li class="timeline__step">
+          <span class="timeline__indicator">3</span>
+          <span class="timeline__title">Fecha y Hora</span>
+        </li>
+        <li class="timeline__step">
+          <span class="timeline__indicator">4</span>
+          <span class="timeline__title">Tus Detalles</span>
+        </li>
+      </ol>
     </div>
+  
     <h2 class="choose-service__title">Escoge tu servicio</h2>
+  
     <div class="choose-service__options">
-        <!-- Card: Corte -->
-        <div class="service-card">
-            <input type="checkbox" id="service-haircut" class="service-card__checkbox"/>
-        
-            <label for="service-haircut" class="service-card__label">
-                <img src="assets/icons/corte.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Corte</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">45 min</span>
-                    </p>
-                    <p class="service-card__price">$160</p> </div>
-            </label>
-        </div>
-
-        <!-- Card: Ritual de Barba -->
-        <div class="service-card">
-            <input type="checkbox" id="service-beard" class="service-card__checkbox"/>
-        
-            <label for="service-beard" class="service-card__label">
-                <img src="assets/icons/beard.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Ritual de Barba</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">45 min</span>
-                    </p>
-                    <p class="service-card__price">$170</p> </div>
-            </label>
-        </div>      
-
-        <!-- Card: Facial -->
-        <div class="service-card">
-            <input type="checkbox" id="service-facial" class="service-card__checkbox"/>
-        
-            <label for="service-facial" class="service-card__label">
-                <img src="assets/icons/facial.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Facial</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">45 min</span>
-                    </p>
-                    <p class="service-card__price">$150</p> </div>
-            </label>
-        </div> 
-
-
-        <!-- Card: Depilación con Hilo -->
-        <div class="service-card">
-            <input type="checkbox" id="service-thread" class="service-card__checkbox"/>
-        
-            <label for="service-thread" class="service-card__label">
-                <img src="assets/icons/thread.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Depilación con Hilo (Ceja)</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">30 min</span>
-                    </p>
-                    <p class="service-card__price">$200</p> </div>
-            </label>
-        </div> 
-
-        <!-- Card: Tinte de Barba -->
-        <div class="service-card">
-            <input type="checkbox" id="service-bearddye" class="service-card__checkbox"/>
-        
-            <label for="service-bearddye" class="service-card__label">
-                <img src="assets/icons/dye.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Tinte de Barba</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">45 min</span>
-                    </p>
-                    <p class="service-card__price">$200</p> </div>
-            </label>
-        </div> 
-
-        <!-- Card: Cubrimiento de canas -->
-        <div class="service-card">
-            <input type="checkbox" id="service-dyehair" class="service-card__checkbox"/>
-        
-            <label for="service-dyehair" class="service-card__label">
-                <img src="assets/icons/canas.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Cubrimiento de Canas</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">1 hr</span>
-                    </p>
-                    <p class="service-card__price">$200</p> </div>
-            </label>
-        </div> 
-
-        <!-- Card: Depilación de Nariz -->
-        <div class="service-card">
-            <input type="checkbox" id="service-nose" class="service-card__checkbox"/>
-        
-            <label for="service-nose" class="service-card__label">
-                <img src="assets/icons/nose.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Depilación de Nariz</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">30 min</span>
-                    </p>
-                    <p class="service-card__price">$200</p> </div>
-            </label>
-        </div> 
-
-        <!-- Card: Depilación de Ceja -->
-        <div class="service-card">
-            <input type="checkbox" id="service-eyebrow" class="service-card__checkbox"/>
-        
-            <label for="service-eyebrow" class="service-card__label">
-                <img src="assets/icons/razor.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Depilación de Ceja</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">15 min</span>
-                    </p>
-                    <p class="service-card__price">$60</p> </div>
-            </label>
-        </div> 
-
-        <!-- Card: Barba Express -->
-        <div class="service-card">
-            <input type="checkbox" id="service-beard-express" class="service-card__checkbox"/>
-        
-            <label for="service-beard-express" class="service-card__label">
-                <img src="assets/icons/beard.svg" alt="Servicio" class="service-card__icon" />
-        
-                <div class="service-card__info">
-                    <p class="service-card__name">Barba Express</p> <p class="service-card__details">
-                         <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
-                        <span class="service-card__duration">25 min</span>
-                    </p>
-                    <p class="service-card__price">$150</p> </div>
-            </label>
-        </div> 
-    </div>
-</section>
+  
+      <div class="service-card" *ngFor="let service of availableServices; let i = index">
+        <input
+          type="checkbox"
+          [id]="'service-' + service.id"
+          class="service-card__checkbox"
+          [(ngModel)]="service.isSelected"
+          (ngModelChange)="onServiceSelectionChange()"
+          [name]="'service-' + service.id" />
+  
+        <label [for]="'service-' + service.id" class="service-card__label">
+          <img [src]="service.iconUrl" [alt]="service.name" class="service-card__icon" />
+  
+          <div class="service-card__info">
+            <p class="service-card__name">{{ service.name }}</p>
+            <p class="service-card__details">
+              <img src="assets/icons/clock.svg" alt="Icono de duración" class="service-card__detail-icon service-card__duration-icon" />
+              <span class="service-card__duration">{{ service.duration }}</span>
+            </p>
+            <p class="service-card__price">{{ service.price | currency:'MXN':'symbol':'1.2-2' }}</p>
+          </div>
+        </label>
+      </div>
+  
+    </div> </section>

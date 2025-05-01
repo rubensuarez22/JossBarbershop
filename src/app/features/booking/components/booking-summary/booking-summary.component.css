@@ -3,7 +3,7 @@
   padding: 25px;
   border-radius: 6px;
   border: 1px solid #e0e0e0;
-  margin-top: 20px; /* Añade margen inferior si es necesario antes del siguiente elemento */
+  margin-top: 40px; /* Añade margen inferior si es necesario antes del siguiente elemento */
 
   /* --- NUEVAS LÍNEAS PARA AJUSTAR ANCHO Y CENTRAR --- */
   max-width: 1600px; /* Define un ancho máximo. Ajusta este valor (ej. 800px, 1000px) */
@@ -134,3 +134,73 @@
        margin-top: 20px; /* Añadir espacio si se apilan */
     }
   }
+
+  /* Estilos para el diálogo de políticas */
+.policy-dialog {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0; /* Quitamos padding para controlar el interior */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-width: 300px; /* Ancho mínimo */
+  max-width: 90vw; /* Ancho máximo relativo */
+  width: 500px; /* Ancho preferido */
+  background-color: white;
+}
+
+/* Estilos para el fondo oscuro cuando el modal está abierto */
+.policy-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px); /* Efecto blur opcional */
+}
+
+.dialog-content {
+    padding: 20px 25px; /* Espaciado interno */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre elementos */
+}
+
+.dialog-title {
+  margin: 0 0 10px 0; /* Espacio debajo del título */
+  font-size: 1.3em;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.dialog-content p,
+.dialog-content ul {
+    line-height: 1.6;
+    color: #555;
+    margin: 0; /* Resetear márgenes por defecto */
+}
+
+.dialog-content ul {
+    padding-left: 20px; /* Indentación de la lista */
+    list-style: disc;
+}
+
+.dialog-close-button {
+  align-self: flex-end; /* Botón a la derecha */
+  margin-top: 15px; /* Espacio arriba del botón */
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dialog-close-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Opcional: Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+dialog[open] {
+  animation: fadeIn 0.3s ease-out;
+}

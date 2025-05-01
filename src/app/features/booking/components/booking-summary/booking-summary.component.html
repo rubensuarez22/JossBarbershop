@@ -1,41 +1,54 @@
 <div class="summary-container">
-    <h3>Resumen de Reserva</h3>
-  
-    <div class="summary-details">
+  <h3>Resumen de Reserva</h3>
+
+  <div class="summary-details">
       <div class="summary-row">
-        <span class="summary-label">Servicio</span>
-        <span class="summary-value">{{ serviceName || 'No seleccionado' }}</span>
+          <span class="summary-label">Servicio</span>
+          <span class="summary-value">{{ serviceName || 'No seleccionado' }}</span>
       </div>
+
       <div class="summary-row">
-        <span class="summary-label">Estilista</span>
-        <span class="summary-value">{{ stylistName || 'No seleccionado' }}</span>
+          <span class="summary-label">Estilista</span>
+          <span class="summary-value">{{ stylistName || 'No seleccionado' }}</span>
       </div>
+
       <div class="summary-row">
-        <span class="summary-label">Fecha y Hora</span>
-        <span class="summary-value">
-          <ng-container *ngIf="selectedDateTime; else noDateTime">
-            {{ selectedDateTime | date:'d MMM y' }} a las {{ selectedDateTime | date:'h:mm a' }}
-            </ng-container>
-          <ng-template #noDateTime>No seleccionada</ng-template>
-        </span>
+          <span class="summary-label">Fecha y Hora</span>
+          <span class="summary-value">
+              <ng-container *ngIf="selectedDateTime; else noDateTime">
+                  {{ selectedDateTime | date:'d MMM y' }} a las {{ selectedDateTime | date:'h:mm a' }}
+              </ng-container>
+              <ng-template #noDateTime>No seleccionada</ng-template>
+          </span>
       </div>
+
       <div class="summary-row total-price-row">
-        <span class="summary-label">Precio Total</span>
-        <span class="summary-value price">
-          <ng-container *ngIf="totalPrice !== null && totalPrice !== undefined; else noPrice">
-            {{ totalPrice | currency:'MXN':'symbol':'1.2-2' }}
-          </ng-container>
-          <ng-template #noPrice>--</ng-template>
-        </span>
+          <span class="summary-label">Precio Total</span>
+          <span class="summary-value price">
+               <ng-container *ngIf="totalPrice !== null && totalPrice !== undefined; else noPrice">
+                   {{ totalPrice | currency:'MXN':'symbol':'1.2-2' }}
+              </ng-container>
+               <ng-template #noPrice>--</ng-template>
+          </span>
       </div>
-    </div>
-  
-    <div class="actions-area">
-      <a href="#" class="policy-link" (click)="$event.preventDefault(); onViewPolicy()">Política de Cancelación</a>
+  </div> <div class="actions-area">
+      <a href="#" class="policy-link" (click)="$event.preventDefault(); onViewPolicy()">Política de Reserva y Cancelación</a>
+
       <button class="confirm-button" (click)="onConfirm()" [disabled]="!canConfirm">
-        Confirmar Reserva
+          Confirmar Reserva
       </button>
-      <a href="#" class="support-link" (click)="$event.preventDefault(); onContactSupport()">¿Necesitas ayuda? Contacta a soporte</a>
-    </div>
-  
+      </div> </div> <dialog #policyDialog class="policy-dialog">
+  <div class="dialog-content">
+      <h4 class="dialog-title">Política de Reserva y Cancelación</h4>
+      <p>
+          A continuación, te presentamos nuestra política de cancelación:
+      </p>
+      <ul>
+          <li><strong>No se permite la cancelación ni la reprogramación una vez reservada la cita.</strong></li>
+      </ul>
+      <p>
+        Cualquier servicios realizado exclusivamente con el maestro Joss tiene un costo de $200 cada uno.
+      </p>
+      <button class="dialog-close-button" (click)="closePolicyDialog()">Cerrar</button>
   </div>
+</dialog>
