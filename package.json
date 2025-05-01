@@ -4,14 +4,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "build:href": "ng build --configuration production --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "clean:docs": "del-cli docs",
-    "build:gh": "npm run clean:docs && ng build --configuration production --base-href \"/JossBarbershop/\"",
-    "copy:dist": "copyfiles -u 2 \"dist/joss-barbershop/**/*\" docs",
-    "build:github": "npm run build:gh && npm run copy:dist"
+    "clean:dist": "rimraf dist",
+    "clean:docs": "rimraf docs",
+    "build:prod": "ng build --configuration production",
+    "build:prod:gh": "ng build --configuration production --base-href \"/JossBarbershop/\"",
+    "postbuild:flatten": "copyfiles -u 3 \"dist/joss-barbershop/browser/**/*\" dist/joss-barbershop && copyfiles \"dist/joss-barbershop/3rdpartylicenses.txt\" dist/joss-barbershop && copyfiles \"dist/joss-barbershop/prerendered-routes.json\" dist/joss-barbershop && rimraf dist/joss-barbershop/browser && rimraf dist/joss-barbershop/dist",
+    "build:flat": "npm run clean:dist && npm run build:prod && npm run postbuild:flatten",
+    "build:flat:gh": "npm run clean:dist && npm run build:prod:gh && npm run postbuild:flatten",
+    "copy:flat_to_docs": "copyfiles -u 2 \"dist/joss-barbershop/**/*\" docs",
+    "build:github_pages": "npm run build:flat:gh && npm run clean:docs && npm run copy:flat_to_docs"
   },
   "private": true,
   "dependencies": {
