@@ -84,7 +84,6 @@
     .contact-section__container {
         flex-direction: column;
         /* Mantiene el apilamiento vertical */
-        gap: 1.75rem;
         /* Ajustar espacio vertical entre bloques */
 
         /* Reducir padding y quitar margen horizontal (innecesario si es 100% ancho) */
@@ -103,7 +102,7 @@
         min-width: unset;
         /* Resetear min-width */
         /* Opcional: añadir margen inferior si 'gap' no es suficiente */
-        /* margin-bottom: 1rem; */
+        margin-bottom: -10rem;
     }
 
     /* .contact-item:last-child { margin-bottom: 0; } */
@@ -141,6 +140,7 @@
 /* --- (Opcional) Media Query para Móviles más Pequeños --- */
 @media (max-width: 480px) {
     .contact-section {
+        gap: 0.5rem;
         margin: 32px auto;
         /* Aún menos margen vertical */
     }

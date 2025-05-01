@@ -60,28 +60,33 @@
     text-align: left;
 }
 
-/* Rating */
+.rating-star-img {
+    width: 1rem;
+    /* 16px aprox */
+    height: 1rem;
+    /* 16px aprox */
+    margin-right: 0.25rem;
+    /* 4px aprox */
+    vertical-align: middle;
+    /* Ayuda a alinear con el texto del score */
+}
+
+
+/* --- Estilos para el contenedor y el score (sin cambios) --- */
 .barber-card__rating {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-}
-
-.star {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.25rem;
-    background: url('/assets/icons/star-empty.svg') no-repeat center/contain;
-}
-
-.star.filled {
-    background-image: url('/assets/icons/star-filled.svg');
+    /* O el valor que uses */
 }
 
 .barber-card__score {
     margin-left: 0.5rem;
+    /* O el valor que uses */
     font-size: 0.875rem;
+    /* O el valor que uses */
     color: #555;
+    /* O el color que uses */
 }
 
 /* Tags */
