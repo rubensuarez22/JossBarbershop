@@ -60,6 +60,8 @@ body {
     color: #4B5563;
     text-decoration: none;
     transition: color 0.2s ease;
+    cursor: pointer;
+    /* Esto cambia el cursor para que se vea como un enlace */
     white-space: nowrap;
     /* Evita saltos de línea en los enlaces */
 }
@@ -67,6 +69,7 @@ body {
 .header__link:hover {
     color: #C4A47C;
 }
+
 
 /* CTA button */
 .header__btn {
