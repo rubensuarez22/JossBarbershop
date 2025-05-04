@@ -32,37 +32,6 @@ export class BarberService {
       rating: 4.7,
       tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
     },
-    {
-      name: 'Raul Asensio',
-      imageUrl: 'assets/barbers/raul.jpg',
-      rating: 4.7,
-      tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-    },
-    {
-      name: 'Raul Asensio',
-      imageUrl: 'assets/barbers/raul.jpg',
-      rating: 4.7,
-      tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-    },
-    {
-      name: 'Raul Asensio',
-      imageUrl: 'assets/barbers/raul.jpg',
-      rating: 4.7,
-      tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-    },
-    {
-      name: 'Raul Asensio',
-      imageUrl: 'assets/barbers/raul.jpg',
-      rating: 4.7,
-      tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-    },
-    {
-      name: 'Raul Asensio',
-      imageUrl: 'assets/barbers/raul.jpg',
-      rating: 4.7,
-      tags: ['Estilos Modernos', 'Tratamientos', 'Barbas']
-    },
-
   ];
 
   constructor() { }

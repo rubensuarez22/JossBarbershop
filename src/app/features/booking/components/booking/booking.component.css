@@ -1,0 +1,203 @@
+/* booking.component.css */
+  
+  /* =========================================== */
+  /* === ESTILOS PARA BOOKING TIMELINE (STICKY) === */
+  /* =========================================== */
+  
+  .booking-timeline {
+    /* --- Posicionamiento Sticky --- */
+    position: sticky;
+    /* Pégalo 100px desde arriba para dejar espacio al header fijo */
+    top: 80px;
+    /* z-index menor que el header principal (asumiendo que es >= 100) */
+    z-index: 90;
+  
+    /* --- Estilos Visuales Sticky --- */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.07); /* Sombra suave */
+  
+    /* --- Dimensiones y Centrado --- */
+    max-width: 1000px; /* Ancho máximo del timeline */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  
+    /* --- Padding Interno --- */
+    padding: 1rem; /* Espacio interno (ej: 16px) */
+    
+    background-color: #ffffff; 
+  }
+  
+  .timeline__steps {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative; /* Base para la línea conectora */
+  }
+  
+  .timeline__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    flex: 1; /* Ocupa espacio equitativamente */
+    padding: 0 5px; /* Evita que se peguen mucho */
+  }
+  
+  /* --- Indicador (Círculo) --- */
+  .timeline__indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f0f0f0; /* Color fondo inactivo */
+    color: #999;             /* Color número inactivo */
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 0.5rem; /* Espacio hasta el título */
+    z-index: 1;
+    position: relative;
+    border: 2px solid #e0e0e0; /* Borde inactivo */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* --- Título del Paso --- */
+  .timeline__title {
+    font-size: 0.85em;
+    color: #999; /* Color texto inactivo */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+    line-height: 1.3;
+  }
+  
+  /* --- Línea Conectora --- */
+  .timeline__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 15px; /* Centro vertical del indicador (30px / 2) */
+    left: calc(50% + 15px); /* Mitad + radio del indicador */
+    width: calc(100% - 30px); /* Ancho entre centros de indicadores */
+    height: 2px;
+    background-color: #e0e0e0; /* Color línea inactiva */
+    z-index: 0;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+  }
+  
+  /* === ESTILOS DE ESTADO PARA TIMELINE === */
+  
+  /* --- Pasos COMPLETADOS --- */
+  .timeline__step.is-complete .timeline__indicator {
+    border-color: #C4A47C;
+    background-color: #C4A47C;
+    color: #ffffff;
+  }
+  .timeline__step.is-complete .timeline__title {
+    color: #333;
+    font-weight: 600;
+  }
+  .timeline__step.is-complete:not(:last-child)::after {
+    background-color: #C4A47C;
+  }
+  
+  /* --- Paso ACTIVO --- */
+  .timeline__step.is-active .timeline__indicator {
+    border-color: #a4815c; /* Tono más oscuro para activo */
+    background-color: #a4815c;
+    color: #ffffff;
+  }
+  .timeline__step.is-active .timeline__title {
+     color: #a4815c;
+     font-weight: 700; /* Negrita */
+  }
+  .timeline__step.is-active:not(:last-child)::after {
+    background-color: #C4A47C; /* La línea también se completa/activa */
+  }
+  
+  /* --- Pasos DESHABILITADOS --- */
+  .timeline__step.is-disabled {
+     opacity: 0.5;
+     pointer-events: none; /* Si fueran clickables */
+  }
+  /* Hereda colores grises por defecto */
+  
+  
+  /* =================================================== */
+  /* === ESTILOS PARA EL CONTENEDOR PRINCIPAL Y PASOS === */
+  /* =================================================== */
+  
+  /* Contenedor que envuelve los componentes de pasos */
+  /* (Debajo del timeline) */
+  .booking-content-area { /* Asegúrate que tu HTML tenga este contenedor */
+    /* !!! AJUSTA ESTE PADDING-TOP !!! */
+    /* Debe ser >= (Altura Header Fijo) + (Altura Timeline Sticky) */
+    /* Ejemplo: 100px (Header) + 70px (Timeline aprox.) = 170px */
+    padding-top: 170px;
+  
+    /* Opcional: Centrar y limitar ancho del contenido */
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* Estilo para cada sección de paso (Servicio, Estilista, etc.) */
+  .booking-step {
+    margin-bottom: 2.5rem; /* Espacio vertical entre pasos */
+  }
+  
+  /* Estilo para la sección del resumen */
+  .booking-summary-section {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Estilo opcional para el título principal H2 de la página */
+  .booking-main-title {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    /* Añadir padding-top aquí si NO usas .booking-content-area para el padding */
+    /* padding-top: 170px; */
+  }
+  
+  
+  /* =========================================== */
+  /* === AJUSTES RESPONSIVOS (Ejemplo)        === */
+  /* =========================================== */
+  @media (max-width: 768px) {
+    .booking-timeline {
+       padding: 0.8rem 0.5rem; /* Ajusta padding del timeline */
+    }
+    .timeline__title {
+      font-size: 0.75em; /* Título más pequeño */
+    }
+  
+    .booking-content-area {
+      /* !!! RECALCULA Y AJUSTA ESTE PADDING-TOP PARA MÓVIL !!! */
+      /* (Altura Header Fijo Móvil) + (Altura Timeline Móvil) */
+      /* Ejemplo: 100px + 65px = 165px */
+      padding-top: 165px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    .booking-step,
+    .booking-summary-section {
+      margin-bottom: 1.5rem; /* Menos espacio entre pasos en móvil */
+    }
+     .booking-summary-section {
+      margin-top: 1.5rem;
+    }
+  }

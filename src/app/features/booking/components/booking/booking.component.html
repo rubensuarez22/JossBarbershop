@@ -1,3 +1,46 @@
+<div class="booking-timeline">
+  <ol class="timeline__steps">
+    <li class="timeline__step"
+        [ngClass]="{
+          'is-active': true,
+          'is-complete': isServiceComplete
+        }">
+      <span class="timeline__indicator">1</span>
+      <span class="timeline__title">Servicio</span>
+    </li>
+
+    <li class="timeline__step"
+        [ngClass]="{
+          'is-active': currentStep === 2,
+          'is-complete': isStylistComplete,
+          'is-disabled': !isServiceComplete
+        }">
+      <span class="timeline__indicator">2</span>
+      <span class="timeline__title">Barbero</span>
+    </li>
+
+    <li class="timeline__step"
+        [ngClass]="{
+          'is-active': currentStep === 3,
+          'is-complete': isDateTimeComplete,
+          'is-disabled': !isStylistComplete
+        }">
+      <span class="timeline__indicator">3</span>
+      <span class="timeline__title">Fecha y Hora</span>
+    </li>
+
+    <li class="timeline__step"
+        [ngClass]="{
+          'is-active': currentStep === 4,
+          'is-complete': areDetailsValid,
+          'is-disabled': !isDateTimeComplete
+        }">
+      <span class="timeline__indicator">4</span>
+      <span class="timeline__title">Tus Detalles</span>
+    </li>
+  </ol>
+</div>
+
 <!-- Paso 1: Elegir Servicio -->
 <app-choose-service (selectionChanged)="handleServiceSelection($event)">
 </app-choose-service>
@@ -11,12 +54,15 @@
 </app-pick-date-time>
 
 <!-- Paso 4: Tus Detalles -->
-<app-your-details></app-your-details>
+<app-your-details
+  (detailsValidityChanged)="handleDetailsValidity($event)">
+</app-your-details>
 
 <!-- Paso 5: Resumen de la Reserva -->
 <app-booking-summary
-  [serviceName]="serviceNameToDisplay" 
-  [totalPrice]="currentTotalPrice"     
-  [stylistName]="selectedStylistName"  
-  [selectedDateTime]="selectedDateTime">
-</app-booking-summary>
+    [serviceName]="serviceNameToDisplay"
+    [stylistName]="selectedStylistName"
+    [selectedDateTime]="selectedDateTime"
+    [totalPrice]="currentTotalPrice"
+    [canConfirm]="canConfirm"  (confirmBooking)="confirmBooking()">
+  </app-booking-summary>
