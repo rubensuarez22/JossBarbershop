@@ -5,11 +5,11 @@
         </div>
 
         <nav class="header__nav">
-            <a routerLink="/" class="header__link">Inicio</a>
-            <a routerLink="/" class="header__link">Servicios</a>
-            <a routerLink="/barbers" class="header__link">Barberos</a>
-            <a routerLink="/contact" class="header__link">Contacto</a>
+            <a routerLink="" (click)="scrollToSection('hero')" class="header__link">Inicio</a>
+            <a routerLink="" (click)="scrollToSection('barberos')" class="header__link">Barberos</a>
+            <a routerLink="" (click)="scrollToSection('contacto')" class="header__link">Contacto</a>
         </nav>
+
 
         <button routerLink="/services" class="header__btn">
             Reservar Ahora
